@@ -18,7 +18,7 @@
     "wp:install": "bash ./scripts/install-wordpress-script.sh $npm_package_config_wpVersion",
     "pi:build": "react-router build --mode pi",
     "pi:deploy": "bash ./scripts/deploy-pi-script.sh",
-    "pi:build:deploy": "yarn run build:pi && yarn run deploy:pi",
+    "pi:build:deploy": "yarn run pi:build && yarn run pi:deploy",
     "postinstall": "yarn run wp:install"
   },
   "engineStrict": true,
