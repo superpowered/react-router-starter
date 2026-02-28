@@ -2,9 +2,11 @@ https://docs.docker.com/engine/install/debian/
 
 ## Pi Setup:
 
-set ssh config to connect to raspberry pi with alias `pi`
+https://www.raspberrypi.com/software/
+Install Raspberry Pi OS Lite (64-bit)
+set your local ssh config to connect to raspberry pi with alias `pi`
 
-# SSH INTO PI
+# SSH into pi and do initial update
 ```
 ssh pi
 sudo apt update
@@ -38,11 +40,17 @@ sudo usermod -aG docker $USER
 exit
 ```
 
-## Local Setup:
+## Set up (and then fill out) .env files:
 ```
 cp .env.template .env
 cp .env.template .env.pi
+```
+
+## Local Setup:
+```
 yarn run install
 yarn run build
 yarn run deploy:pi
 ```
+
+App should be available at pi's IP

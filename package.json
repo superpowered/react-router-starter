@@ -11,13 +11,14 @@
   },
   "scripts": {
     "build": "react-router build",
-    "build:pi": "react-router build --mode pi",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "deploy:pi": "yarn run build:pi && bash deploy-pi-script.sh",
-    "wp:remove": "cd api && rm -rf wordpress-*.zip wp-admin wp-includes xmlrpc.php index.php readme.html license.txt && rm -rf `find wp-*.php ! -name 'wp-config.php'`",
-    "wp:install": "yarn run wp:remove && curl -O \"https://wordpress.org/wordpress-$npm_package_config_wpVersion.zip\" && unzip -o wordpress-$npm_package_config_wpVersion.zip && rm -rf wordpress/wp-content && mv wordpress/* ./api && rm -rf wordpress wordpress-$npm_package_config_wpVersion.zip",
+    "wp:remove": "bash ./scripts/rm-wordpress-script.sh",
+    "wp:install": "bash ./scripts/install-wordpress-script.sh $npm_package_config_wpVersion",
+    "pi:build": "react-router build --mode pi",
+    "pi:deploy": "bash ./scripts/deploy-pi-script.sh",
+    "pi:build:deploy": "yarn run build:pi && yarn run deploy:pi",
     "postinstall": "yarn run wp:install"
   },
   "engineStrict": true,

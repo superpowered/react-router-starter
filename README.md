@@ -1,18 +1,7 @@
-# Welcome to React Router!
+# React Router & WordPress Starer
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
-
-## Features
-
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+Spins up a simple React Router SPA with a wordpress backend. 
+Small set of instuctions included for setting up and deploying to a raspberry pi on a local network
 
 ## Getting Started
 
@@ -21,67 +10,47 @@ A modern, production-ready template for building full-stack React applications u
 Install the dependencies:
 
 ```bash
-npm install
+yarn install
 ```
+
+See initial-setup.md
 
 ### Development
 
 Start the development server with HMR:
 
 ```bash
-npm run dev
+yarn run dev
 ```
 
 Your application will be available at `http://localhost:5173`.
 
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
+### Docker
 
 To build and run using Docker:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+docker compose up --build -d
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+Wordpress API available at `http://localhost:81`.
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+## Building
 
-### DIY Deployment
+Create a production build:
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+```bash
+yarn run build
 ```
 
-## Styling
+Once built (and docker compose run again)
+production-like build with be available at `http://localhost`
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
 
----
+## Deployment
 
-Built with ❤️ using React Router.
+### Pi Deployment
+
+```bash
+yarn run pi:build:deploy
+```
