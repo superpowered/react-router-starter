@@ -24,7 +24,7 @@ api/wp-content/tmp
 api/wp-content/blogs.dir
 
 # Ignore Uploads
-api/api/wp-content/uploads
+api/wp-content/uploads
 
 # Backup Plugin Stuff
 api/wp-content/backup
