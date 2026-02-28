@@ -4,10 +4,10 @@
 ##############################
 
 # Wordpress will be handled via package.json
-wp-admin
-wp-includes
-wp-*.php
-xmlrpc.php
+api/wp-admin
+api/wp-includes
+api/wp-*.php
+api/xmlrpc.php
 api/index.php
 api/license.txt
 api/readme.html
@@ -17,53 +17,53 @@ api/readme.*.html
 !wp-config.php
 
 # Ships with Wordpress Stuff
-wp-content/themes/twenty*
-wp-content/plugins/hello.php
-wp-content/upgrade
-wp-content/tmp
-wp-content/blogs.dir
+api/wp-content/themes/twenty*
+api/wp-content/plugins/hello.php
+api/wp-content/upgrade
+api/wp-content/tmp
+api/wp-content/blogs.dir
 
 # Ignore Uploads
-wp-content/uploads
+api/api/wp-content/uploads
 
 # Backup Plugin Stuff
-wp-content/backup
-wp-content/backups
-wp-content/backup-db
-wp-content/backup-db/*
-wp-content/backup*
-wp-content/updraft
-wp-content/managewp
+api/wp-content/backup
+api/wp-content/backups
+api/wp-content/backup-db
+api/wp-content/backup-db/*
+api/wp-content/backup*
+api/wp-content/updraft
+api/wp-content/managewp
 wp-snapshots
-wp-content/ai1wm-backups
+api/wp-content/ai1wm-backups
 
 #Eshop
-wp-content/eshop_downloads
+api/wp-content/eshop_downloads
 
 # Duplicator stuff
-/web.config
-/web.config.*
-/wp-tests-config.php
+api/web.config
+api/web.config.*
+api/wp-tests-config.php
 
 # Wordfence Stuff
-wordfence-waf.php
-wp-content/wflogs
-wp-content/wfcache
-wp-content/plugins/wordfence/tmp
+api/wordfence-waf.php
+api/wp-content/wflogs
+api/wp-content/wfcache
+api/wp-content/plugins/wordfence/tmp
 
 # Cache stuff
-wp-content/advanced-cache.php
-wp-content/wp-cache-config.php
-wp-content/w3tc-config
-wp-content/db.php
-wp-content/object-cache.php
-wp-content/object-cache.php.*
-wp-content/cache
-wp-content/cache/*
-wp-content/cache/supercache/*
-wp-content/plugins/bwp-minify/cache
-wp-content/et-cache
-wp-content/wp-rocket-config
+api/wp-content/advanced-cache.php
+api/wp-content/wp-cache-config.php
+api/wp-content/w3tc-config
+api/wp-content/db.php
+api/wp-content/object-cache.php
+api/wp-content/object-cache.php.*
+api/wp-content/cache
+api/wp-content/cache/*
+api/wp-content/cache/supercache/*
+api/wp-content/plugins/bwp-minify/cache
+api/wp-content/et-cache
+api/wp-content/wp-rocket-config
 
 # Webmaster Verification Stuff
 google*.html
@@ -210,14 +210,14 @@ __MACOSX
 .smushit-status
 .gitattributes
 _wpeprivate*
-wp-content/mu-plugins/mu-plugin.php
-wp-content/mu-plugins/slt-force-strong-passwords.php
-wp-content/mu-plugins/stop-long-comments.php
-wp-content/mu-plugins/force-strong-passwords*
-wp-content/mu-plugins/wpengine-common*
-wp-content/mysql.sql
-wp-content/mu-plugins/wpengine-security-auditor.php
-wp-content/mu-plugins/wpe-wp-sign-on-plugin*
+api/wp-content/mu-plugins/mu-plugin.php
+api/wp-content/mu-plugins/slt-force-strong-passwords.php
+api/wp-content/mu-plugins/stop-long-comments.php
+api/wp-content/mu-plugins/force-strong-passwords*
+api/wp-content/mu-plugins/wpengine-common*
+api/wp-content/mysql.sql
+api/wp-content/mu-plugins/wpengine-security-auditor.php
+api/wp-content/mu-plugins/wpe-wp-sign-on-plugin*
 
 # Composer and Guzzle Specific
 vendor
