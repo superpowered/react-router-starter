@@ -1,0 +1,49 @@
+{
+  "name": "starter",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Starter",
+  "author": "Andrew Herder",
+  "license": "All Rights Reserved",
+  "private": true,
+  "config": {
+    "wpVersion": "6.9.1"
+  },
+  "scripts": {
+    "build": "react-router build",
+    "build:pi": "react-router build --mode pi",
+    "dev": "react-router dev",
+    "start": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc",
+    "deploy:pi": "yarn run build:pi && bash deploy-pi-script.sh",
+    "wp:remove": "cd api && rm -rf wordpress-*.zip wp-admin wp-includes xmlrpc.php index.php readme.html license.txt && rm -rf `find wp-*.php ! -name 'wp-config.php'`",
+    "wp:install": "yarn run wp:remove && curl -O \"https://wordpress.org/wordpress-$npm_package_config_wpVersion.zip\" && unzip -o wordpress-$npm_package_config_wpVersion.zip && rm -rf wordpress/wp-content && mv wordpress/* ./api && rm -rf wordpress wordpress-$npm_package_config_wpVersion.zip",
+    "postinstall": "yarn run wp:install"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=24",
+    "yarn": ">=1.22"
+  },
+  "dependencies": {
+    "@linaria/core": "^7.0.0",
+    "@linaria/react": "^7.0.1",
+    "@react-router/node": "7.12.0",
+    "@react-router/serve": "7.12.0",
+    "@wyw-in-js/babel-preset": "^1.0.6",
+    "isbot": "^5.1.31",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router": "7.12.0"
+  },
+  "devDependencies": {
+    "@react-router/dev": "7.12.0",
+    "@types/node": "^22",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@wyw-in-js/vite": "^1.0.6",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}

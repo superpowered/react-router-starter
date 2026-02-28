@@ -1,0 +1,92 @@
+# docker-compose.yml - WordPress with Nginx, PHP-FPM, and MySQL
+services:
+  nginx:
+    # https://hub.docker.com/_/nginx
+    image: nginx:1.25-alpine
+    container_name: ${CONTAINER_NAME}-nginx
+    restart: unless-stopped
+    env_file: .env
+    build:
+      context: .
+      dockerfile: server/nginx.dockerfile
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+    volumes:
+      - ./server/nginx:/etc/nginx/conf.d:rw
+      - phpfpm:/var/www/html
+      - ./api:/var/www/html/api
+      - ./build/client:/var/www/html/client:rw
+    networks:
+      - internal
+
+  database:
+    container_name: ${CONTAINER_NAME}-database
+    # https://hub.docker.com/_/mysql
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+      MYSQL_USER: ${DATABASE_USER}
+    command:
+      # Optimized MySQL settings for WordPress
+      - --default-authentication-plugin=mysql_native_password
+      - --innodb-buffer-pool-size=256M
+      - --innodb-log-file-size=64M
+      - --max-allowed-packet=64M
+      - --max-connections=100
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p${DATABASE_ROOT_PASSWORD}"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - internal
+
+  phpfpm:
+    depends_on:
+      - database
+    container_name: ${CONTAINER_NAME}-phpfpm
+    # https://hub.docker.com/_/php
+    image: php:8.2-fpm-alpine
+    build:
+      context: .
+      dockerfile: server/phpfpm.dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DB_HOST: database:3306
+      DB_USER: ${DATABASE_USER}
+      DB_NAME: ${DATABASE_NAME}
+      DB_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - phpfpm:/var/www/html
+      - ./api:/var/www/html/api:rw
+    networks:
+      - internal
+
+volumes:
+  dbdata:
+  phpfpm:
+
+networks:
+  internal:
+    driver: bridge
