@@ -33,7 +33,7 @@ To build and run using Docker:
 docker compose up --build -d
 ```
 
-Wordpress API available at `http://localhost:81`.
+WordPress API available at `http://localhost:81`.
 
 ## Building
 

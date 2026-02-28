@@ -17,5 +17,5 @@ ssh pi << EOF
   cd ../site
   docker compose down
   docker compose up --build -d
-EOF &&
-echo "Finished deploy to pi..."
+EOF
+echo "Finished deploying to pi!"

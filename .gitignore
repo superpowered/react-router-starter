@@ -3,7 +3,7 @@
 # Version: 1.0.0
 ##############################
 
-# Wordpress will be handled via package.json
+# WordPress will be handled via package.json
 api/wp-admin
 api/wp-includes
 api/wp-*.php
@@ -16,7 +16,7 @@ api/readme.*.html
 # Include wp-config, since it will be handled via env vars
 !wp-config.php
 
-# Ships with Wordpress Stuff
+# Ships with WordPress Stuff
 api/wp-content/themes/twenty*
 api/wp-content/plugins/hello.php
 api/wp-content/upgrade
