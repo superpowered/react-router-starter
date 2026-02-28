@@ -8,13 +8,13 @@ services:
     env_file: .env
     build:
       context: .
-      dockerfile: server/nginx.dockerfile
+      dockerfile: docker/nginx.dockerfile
     ports:
       - "80:80"
       - "81:81"
       - "443:443"
     volumes:
-      - ./server/nginx:/etc/nginx/conf.d:rw
+      - ./docker/nginx:/etc/nginx/conf.d:rw
       - phpfpm:/var/www/html
       - ./api:/var/www/html/api
       - ./build/client:/var/www/html/client:rw
@@ -69,7 +69,7 @@ services:
     image: php:8.2-fpm-alpine
     build:
       context: .
-      dockerfile: server/phpfpm.dockerfile
+      dockerfile: docker/phpfpm.dockerfile
     restart: unless-stopped
     env_file: .env
     environment:

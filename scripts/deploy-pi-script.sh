@@ -2,7 +2,7 @@
 
 echo "Deploying to pi..." &&
 rm -rf deploy.zip &&
-zip -r deploy.zip ./api ./build/client ./server ./docker-compose.yml -x 'node_modules' '**/node_modules' '**/debug.log' 'deploy*' 'package.json' '**/package.json' 'package-lock.json' '**/package-lock.json' '.env' '.gitignore' 'yarn.lock' '.react-router' &&
+zip -r deploy.zip ./api ./build/client ./docker ./docker-compose.yml -x 'node_modules' '**/node_modules' '**/debug.log' 'deploy*' 'package.json' '**/package.json' 'package-lock.json' '**/package-lock.json' '.env' '.gitignore' 'yarn.lock' '.react-router' &&
 scp ./deploy.zip pi:~/deploy.zip &&
 rm -rf deploy.zip &&
 ssh pi << EOF

@@ -44,7 +44,7 @@ yarn run build
 ```
 
 Once built (and docker compose run again)
-production-like build with be available at `http://localhost`
+production-like build with be available at `http://localhost`.
 
 
 ## Deployment
